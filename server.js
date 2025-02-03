@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // Serves the whole app
-app.listen(port, () => {
+app.listen(port || 8080, () => {
     console.log(`Server is running on http://localhost:${port}`);
     console.log("Press CTRL+C to end this process.");
 })
