@@ -35,10 +35,5 @@ function loopThroughQuotes() {
     }, 3000)
 }
 
-/*
-// Dan's code which causes an initial 6 second delay at first
-setTimeout(loopThroughQuotes, 3000);
-*/
 
-// No delay while looping through the quotes
-loopThroughQuotes();
+setTimeout(loopThroughQuotes, 3000);
