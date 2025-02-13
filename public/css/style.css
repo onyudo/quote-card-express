@@ -14,8 +14,8 @@ body {
 	flex: 1;
 }
 
-.background-image {
-	background-image: url("../img/mitchell-luo-FWoq_ldWlNQ-unsplash.jpg");
+.background-img {
+	/*background-image: url("../img/mitchell-luo-FWoq_ldWlNQ-unsplash.jpg");*/
 	background-size: cover; /* in video this line is in twice, on line 19 and line 27 */
 	position: fixed;
 	top: 0;

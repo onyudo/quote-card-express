@@ -5,6 +5,29 @@ const el = {
     author: document.getElementById("author")
 };
 
+async function getRandomPhoto() {
+    const url = "http://localhost:1776/api/getRandomImage"; // Ensures it uses HTTP or matches your server protocol
+    try {
+        const response = await fetch(url); // Request the random image from the server
+        const data = await response.json(); // Parse the JSON response
+
+        if (data.status === 200) {
+            const receivedPhoto = data.data; // Access the image URL from 'data'
+
+            const imgDiv = document.querySelector(".background-img");
+            imgDiv.style.backgroundImage = `url(${receivedPhoto})`; // Set the background image of the div
+        } else {
+            console.error("Failed to fetch image data");
+        }
+    } catch (error) {
+        console.log(error); // Log any errors to the console
+    }
+}
+
+getRandomPhoto(); // Call the function to get a random photo when the page loads
+
+
+// Iterating through objects
 const quotes = [
     {
         quote: "Not until we're totally crushed do we show what we are made of.",
@@ -20,20 +43,21 @@ const quotes = [
         quote: "All we have to decide is what to do with the time that is given us.",
         author: "J.R.R. Tolkien"
     },
-]
+];
 
+// Looping through the quotes array every 3 seconds
 function loopThroughQuotes() {
-    let index = 0;
+    let currentIndex = 0;
     setInterval(() => {
-        if (index < quotes.length) {
-            el.quote.innerText = quotes[index].quote;
-            el.author.innerText = quotes[index].author;
-            index++;
+        if (currentIndex < quotes.length) {
+            el.quote.innerText = quotes[currentIndex].quote;
+            el.author.innerText = quotes[currentIndex].author;
+            currentIndex++;
         } else {
-            index = 0;
+            currentIndex = 0; // Restart the loop if we reach the end of the array
         }
     }, 3000)
 }
 
-
-setTimeout(loopThroughQuotes, 3000);
+// Start the quote loop immediately
+loopThroughQuotes(); 
